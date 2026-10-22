@@ -1,0 +1,4 @@
+reference/
+output/
+*.tar.gz
+.playwright-cli/
