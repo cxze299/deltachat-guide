@@ -1,0 +1,1 @@
+<resources><string name="service_description">仅在你点击“优化通知”后，读取系统设置和 Delta Chat 设置界面的控件并操作通知、自启动、后台及省电开关。不会保存或上传界面内容。可随时停止，运行结束后自动停用本服务。</string><color name="icon_background">#364E59</color></resources>
