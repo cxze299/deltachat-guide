@@ -29,35 +29,19 @@ python -m http.server 8917 --bind 127.0.0.1 --directory dist
 
 保持终端运行，按 `Ctrl+C` 停止。此命令仅允许本机访问，外部下载和账号服务仍需联网。
 
-## 云服务器一键部署
+## 云服务器容器部署（推荐）
 
-适用于 **Ubuntu / Debian**，需要 sudo 权限及访问 GitHub、系统软件源的网络连接。
-
-```sh
-curl -fsSL https://raw.githubusercontent.com/cxze299/deltachat-guide/main/deploy-cloud.sh -o deploy-cloud.sh
-sudo sh deploy-cloud.sh
-```
-
-完成后访问 **http://服务器公网IP:8080/**，在云平台安全组和服务器防火墙中放行 **TCP 8080**。
-
-脚本会安装 Git 和 Nginx，下载仓库默认分支的网站文件，写入独立 Nginx 配置，检查配置后启动或重新加载 Nginx。
-
-| 项目 | 默认值 |
-| --- | --- |
-| 访问端口 | `8080` |
-| 网站目录 | `/var/www/deltachat-guide` |
-| Nginx 配置 | `/etc/nginx/conf.d/deltachat-guide.conf` |
-| 更新方式 | 再次执行部署脚本 |
-
-自定义端口：
+服务器安装 Docker Engine、Compose 插件和 Git 后执行：
 
 ```sh
-sudo env PORT=8090 sh deploy-cloud.sh
+git clone https://github.com/cxze299/deltachat-guide.git
+cd deltachat-guide
+sh deploy-docker.sh
 ```
 
-请使用未被其他服务占用的端口。脚本不自动修改防火墙，不申请证书；如需 HTTPS，请配置域名、证书和对应 Nginx 服务。部署会覆盖同名网站文件，但不会清理旧的多余文件。已有该站点配置也会被脚本替换。
+访问 `http://服务器公网IP:8080/`，放行 TCP 8080。脚本构建 Nginx 镜像、启动容器并等待健康检查。更新时执行 `git pull --ff-only`，然后重新运行脚本。
 
-更多说明见 [CLOUD-DEPLOY.md](CLOUD-DEPLOY.md)。
+自定义端口、HTTPS 接入、管理命令和旧部署迁移见 [云服务器部署说明](CLOUD-DEPLOY.md)。旧版宿主机 Nginx 脚本仍保留，但容器部署请使用 `deploy-docker.sh`。
 
 ## 群晖 NAS / 已有 Web 服务器
 
