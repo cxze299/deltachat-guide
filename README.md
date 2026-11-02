@@ -124,6 +124,6 @@ Android 设置助手部分自动化需要用户在手机上手动授权无障碍
 
 ## APK 下载
 
-[下载 Delta 通知设置助手 v2.2](https://github.com/cxze299/deltachat-guide/releases/download/settings-helper-v2.2/delta-settings-helper.apk) · [Release 说明](https://github.com/cxze299/deltachat-guide/releases/tag/settings-helper-v2.2)
+[国内下载：NAS](https://mouss.synology.me:1050/deltachat-guide/downloads/delta-settings-helper.apk) · [备用下载：GitHub](https://github.com/cxze299/deltachat-guide/releases/download/settings-helper-v2.2/delta-settings-helper.apk) · [Release 说明](https://github.com/cxze299/deltachat-guide/releases/tag/settings-helper-v2.2)
 
 此安装包为 Android 通知设置助手，不是 Delta Chat 主程序。
