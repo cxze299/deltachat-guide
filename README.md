@@ -121,3 +121,9 @@ Android 设置助手部分自动化需要用户在手机上手动授权无障碍
 - **更新后仍显示旧样式**：强制刷新页面，检查资源版本参数，并确认更新的是当前站点目录。
 - **按钮没有打开应用**：先安装或更新 Delta Chat，使用系统浏览器打开，并允许跳转到应用。
 - **第三方下载或账号入口不可用**：检查对应外部服务状态；重新部署静态网站不会修复外部服务。
+
+## APK 下载
+
+[下载 Delta 通知设置助手 v2.2](https://github.com/cxze299/deltachat-guide/releases/download/settings-helper-v2.2/delta-settings-helper.apk) · [Release 说明](https://github.com/cxze299/deltachat-guide/releases/tag/settings-helper-v2.2)
+
+此安装包为 Android 通知设置助手，不是 Delta Chat 主程序。
