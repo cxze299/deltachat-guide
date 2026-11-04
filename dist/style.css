@@ -187,3 +187,24 @@ header{min-height:58px}header .brand{min-height:58px}header .brand h1{font-size:
 }
 @media(min-width:641px) and (max-width:760px){.panel .notification-entry{display:flex;width:max-content;margin:8px 0 0}.steps{gap:14px}}
 @media(min-width:641px){.panel-bottom>span{display:none}}
+
+/* Landscape tablets: use the width while keeping primary actions in view. */
+@media(min-width:800px) and (max-width:1400px) and (orientation:landscape) and (hover:none) and (pointer:coarse){
+ header{min-height:54px;padding-left:max(24px,calc((100% - 880px)/2));padding-right:max(24px,calc((100% - 880px)/2))}
+ main{max-width:928px}
+ .guide{padding:16px 24px}
+ .steps .step{min-height:48px;padding:6px 0 10px}
+ .panel{padding:20px 0 16px}
+ .panel h3{font-size:23px}
+ .panel .description{margin-bottom:10px}
+ .panel .tabs{margin-bottom:14px}
+ #panel:has(#switch-store) .content-row>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px}
+ #panel:has(#switch-store) .content-row p{grid-column:1/-1;margin:0 0 2px}
+ #panel #switch-store,#panel #switch-store+a,#panel .store-fallback{max-width:none;width:100%;margin:0;min-height:48px}
+ .panel .secondary,.panel-bottom .primary{min-height:48px}
+ .panel-bottom{margin-top:14px;padding-top:12px;flex-wrap:nowrap}
+ .panel-bottom .primary{margin-left:0}
+ .existing-entry{min-height:48px}
+ footer{margin:0 24px;padding:12px 0}
+ #store-dialog,#existing-dialog,#help-dialog,#notification-dialog{max-height:calc(100dvh - 24px);overscroll-behavior:contain}
+}
