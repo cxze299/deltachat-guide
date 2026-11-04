@@ -1,3 +1,5 @@
+const isGuideIPad=/iPad/i.test(navigator.userAgent)||(/Mac/i.test(navigator.platform+' '+navigator.userAgent)&&navigator.maxTouchPoints>1);
+document.documentElement.classList.toggle('ipad',isGuideIPad);
 function detectGuideDevice(nav){
  const ua=nav.userAgent||'',os=(nav.userAgentData&&nav.userAgentData.platform)||nav.platform||'';
  const apple=/iPhone|iPad|iPod/i.test(ua)||/iOS|iPadOS/i.test(os)||(/Mac/i.test(os+' '+ua)&&nav.maxTouchPoints>1);
