@@ -34,3 +34,13 @@ Automatic brand routing and model/Android version display added. See BRANDS.md f
 
 
 Release update 2026-10-25: user explicitly requested NAS deployment. v2.2 APK and all four guide pages deployed and verified byte-for-byte over HTTPS. Phone installation and other-brand device verification remain unconfirmed.
+
+
+## Version 2.3 — 精细化多品牌无障碍分支适配
+
+针对 OPPO / 一加 / realme (ColorOS)、vivo / iQOO (OriginOS)、华为 / 荣耀 (HarmonyOS / MagicOS) 和小米 (MIUI / HyperOS) 实现了专门的自动化状态机分支：
+- OPPO / 一加：适配“耗电管理”中的“允许后台活动”/“允许唤醒前台”和专属自启动列表；
+- vivo / iQOO：适配“后台高耗电”策略选项（ExcessivePowerManagerActivity 与应用详情）及自启动/后台启动列表；
+- 华为 / 荣耀：适配应用启动管理中的“自动管理”切关与三项手动子权限（允许自启动、允许关联启动、允许后台活动）校验与保存；
+- 扩展了系统包名监听（包含 android 与 systemui），避免关键弹窗被过滤；
+- 强化了标题与应用名称模糊容错匹配，提升各品牌变种系统兼容性。

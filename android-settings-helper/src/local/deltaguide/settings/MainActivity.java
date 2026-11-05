@@ -11,7 +11,7 @@ import java.util.Locale;
 public class MainActivity extends Activity {
  private BrandProfile profile; private String target; private TextView status; private ProgressBar progress; private TextView results; private Button optimize; private final android.os.Handler ui=new android.os.Handler(); private final Runnable refresh=new Runnable(){public void run(){refreshProgress();ui.postDelayed(this,500);}};
  @Override public void onCreate(Bundle b){super.onCreate(b);target=findDelta();profile=BrandProfile.detect(Build.MANUFACTURER,Build.BRAND);LinearLayout root=new LinearLayout(this);root.setOrientation(1);int p=dp(24);root.setPadding(p,dp(48),p,p);root.setBackgroundColor(Color.WHITE);ScrollView scroll=new ScrollView(this);scroll.addView(root);setContentView(scroll);
- TextView title=new TextView(this);title.setText("Delta 通知设置助手");title.setTextSize(24);title.setTextColor(Color.rgb(54,78,89));root.addView(title);
+ TextView title=new TextView(this);title.setText("Delta 通知设置助手 v2.3");title.setTextSize(24);title.setTextColor(Color.rgb(54,78,89));root.addView(title);
  status=new TextView(this);status.setTextSize(15);status.setPadding(0,dp(16),0,dp(20));status.setText(profile.name+" · "+profile.validation());root.addView(status);
  progress=new ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal);progress.setMax(4);root.addView(progress,new LinearLayout.LayoutParams(-1,dp(12)));
  results=new TextView(this);results.setTextSize(15);results.setPadding(0,dp(12),0,dp(12));root.addView(results);
@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
  case "app":ok=launch(getPackageManager().getLaunchIntentForPackage(target));break;
  case "notifications":ok=launch(new Intent("android.settings.APP_NOTIFICATION_SETTINGS").putExtra("android.provider.extra.APP_PACKAGE",target));if(!ok)ok=details();break;
  case "details":ok=details();break;
- case "battery":ok=launch(new Intent("android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS"));if(!ok)ok=details();break;
+ case "battery":if(profile.id.equals("xiaomi"))ok=launch(new Intent().setComponent(new ComponentName("com.miui.powerkeeper","com.miui.powerkeeper.ui.HiddenAppsConfigActivity")).putExtra("package_name",target).putExtra("package_label","Delta Chat"));else if(profile.id.equals("vivo"))ok=launch(new Intent().setComponent(new ComponentName("com.vivo.abe","com.vivo.applicationbehaviorengine.ui.ExcessivePowerManagerActivity")));if(!ok)ok=launch(new Intent("android.settings.IGNORE_BATTERY_OPTIMIZATION_SETTINGS"));if(!ok)ok=details();break;
  case "autostart":ok=autoStart();if(!ok){status.setText("此系统没有可用的专用入口，已尝试打开应用信息，请进入电池或后台管理。");details();return;}break;
  default:status.setText("不支持的操作。");return;}
  status.setText(ok?"已打开设置；完成后返回浏览器继续。":"未能打开设置，请从手机系统设置中操作。");}
